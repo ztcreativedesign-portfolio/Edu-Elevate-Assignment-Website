@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$user = "assignme_admin";
-$password = "8pG+Pc6R(6n&";
-$db = "assignme_onlineacademic";
+$user = "assign";
+$password = "8p";
+$db = "assign";
 $conn = mysqli_connect("$host","$user","$password","$db") or die("Not connected");
 
 //function encrypt($string,$key){
