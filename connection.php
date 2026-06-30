@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$user = "assign";
+$user = "assignlost";
 $password = "8p";
-$db = "assign";
+$db = "assigngetlost";
 $conn = mysqli_connect("$host","$user","$password","$db") or die("Not connected");
 
 //function encrypt($string,$key){
@@ -13,7 +13,7 @@ $conn = mysqli_connect("$host","$user","$password","$db") or die("Not connected"
 
 //function decrypt ($string,$key){
 
-//	$string = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256,$key,base64_decode//($string),MCRYPT_MODE_ECB));
+//	$string = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_6,$key,base64_decode//($string),MCRYPT_MODE_ECB));
 	//return $string;
 //}
 
