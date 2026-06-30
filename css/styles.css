@@ -1,0 +1,1848 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif; /* Consistent font style */
+  color: #0c0c0c;
+  overflow-x: hidden;
+}
+
+/* Navbar Section */
+.nav-bar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: flex-start; /* Align items to the left */
+  align-items: center;
+  list-style: none;
+  position: relative;
+  padding: 12px 20px;
+
+}
+
+.logo img {
+  margin-top: 13px;
+  width: 65px;
+  height: 65px;
+}
+
+
+.brand-name h1 {
+  font-size: 22px; /* Adjust font size as needed */
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 550;
+  color: #202f5a  ; /* Set the desired text color */
+  margin-left: 10px; /* Space between the logo and brand name */
+  font-family: 'Oswald';
+  text-align: left; /* Align text to the left */
+  text-transform: uppercase; /* Optional: Transform text to uppercase */
+  letter-spacing: 1px; /* Optional: Space between letters */
+}
+
+/* Menu styles */
+.menu {
+  display: flex;
+  margin-left: auto; /* Push menu items to the right */
+}
+
+.menu li {
+  margin-top: 20px;
+  padding-left: 30px;
+}
+
+.menu li a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color1);
+  text-align: center;
+  transition: 0.15s ease-in-out;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 450;
+  font-family: 'Roboto', sans-serif !important; /* Consistent font style */
+
+}
+
+.menu li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color1);
+  transition: 0.15s ease-in-out;
+}
+
+.menu li a:hover {
+  color: #164f9a  ; /* Change link color on hover */
+}
+
+.menu li a:hover::after {
+  width: 100%; /* Underline effect on hover */
+}
+
+/* Specific style for the Home link */
+.menu li:first-child a {
+  color: #202f5a  ; /* Darker blue for hover effect */
+}
+
+.menu li:first-child a:hover {
+  color: #007BFF; /* Set the Home link color to a blue shade */
+}
+
+.open-menu,
+.close-menu {
+  position: absolute;
+  color: var(--color1);
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: none;
+}
+
+.open-menu {
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+.close-menu {
+  top: 20px;
+  right: 20px;
+}
+
+#check {
+  display: none;
+}
+
+@media(max-width: 610px) {
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 100;
+    background-color: white; /* White background for the hamburger menu */
+    transition: all 0.2s ease-in-out;
+  }
+
+  .menu li {
+    margin-top: 40px;
+  }
+
+  .menu li a {
+    padding: 10px;
+  }
+
+  .open-menu,
+  .close-menu {
+    display: block;
+  }
+
+  #check:checked ~ .menu {
+    right: 0;
+  }
+
+  .menu li a {
+    padding: 10px;
+    /* Add a transition effect for the background and color */
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  }
+
+  /* Hover effect for mobile links */
+  .menu li a:hover {
+    color: #2d54c0; /* Change text color on hover */
+  }
+
+  /* Adjust the brand name for smaller screens */
+  .brand-name h1 {
+    font-size: 15px; /* Slightly smaller font on small screens */
+  }
+}
+
+/*------------ */
+
+
+/* Spinner Box */
+.spinner-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ensure it takes full height */
+}
+
+.spinner {
+  position: relative;
+  width: 300px; /* Size of the spinner */
+  height: 300px; /* Size of the spinner */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Spinner border */
+.spinner-border {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 5px solid #2d54c0; /* Circle border */
+  animation: rotateBorder 8s linear infinite; /* Slower rotation for the border */
+}
+
+/* Logo in the center */
+.spinner-logo {
+  position: absolute;
+  width: 250px; /* Adjusted size of the logo */
+  height: 250px; /* Adjusted size of the logo */
+  z-index: 2; /* Keep logo above spinner */
+  border-radius: 50%;
+}
+
+/* Icons circle */
+.icons-circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rotateBorder 8s linear infinite; /* Rotate the icons with the border */
+}
+
+/* Icon styles */
+.icon-item {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border: 2px solid #2d54c0;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: #2d54c0;
+}
+
+/* Place icons around the spinner */
+.icon-item:nth-child(1) { 
+  top: 0; 
+  left: 50%; 
+  transform: translate(-50%, -50%); /* Center horizontally at the top */
+} /* Top */
+
+.icon-item:nth-child(2) { 
+  top: 50%; 
+  right: 0; 
+  transform: translate(50%, -50%); /* Center vertically on the right */
+} /* Right */
+
+.icon-item:nth-child(3) { 
+  bottom: 0; 
+  left: 50%; 
+  transform: translate(-50%, 50%); /* Center horizontally at the bottom */
+} /* Bottom */
+
+.icon-item:nth-child(4) { 
+  top: 50%; 
+  left: 0; 
+  transform: translate(-50%, -50%); /* Center vertically on the left */
+} /* Left */
+
+/* Animations */
+@keyframes rotateBorder {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Spinner Box - Responsive */
+@media (max-width: 768px) {
+  .spinner {
+    width: 200px; /* Smaller spinner size */
+    height: 200px;
+  }
+
+  .spinner-logo {
+    width: 180px; /* Smaller logo in spinner */
+    height: 180px;
+  }
+
+  .icon-item {
+    width: 40px; /* Adjust icon size */
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+
+/*------------ */
+
+
+ /* Slider Section */
+ .slider_section .detail-box h3 {
+  font-size: 1.2rem; /* Slightly larger font size */
+  background: linear-gradient(to right, #20d2fe, #00aaff); /* Gradient from #20d2fe to #00aaff */
+  -webkit-background-clip: text; /* Clip the background to the text */
+  -webkit-text-fill-color: transparent; /* Make the text transparent to show the gradient */
+  text-shadow: 2px 2px 10px rgba(106, 160, 217, 0.7); /* Added a darker shadow for better contrast */
+  letter-spacing: 1px; /* Space between letters */
+  margin-bottom: 20px; /* Space below the heading */
+  text-align: left; /* Center the heading */
+  font-family: 'Roboto', sans-serif; /* Consistent font style */
+
+}
+
+.slider_section .detail-box h1 {
+  font-size: 2.5rem; /* Slightly larger font size */
+  color: #20d2fe; /* Base color */
+  text-shadow: 2px 2px 5px rgba(144, 193, 205, 0.7); /* Added shadow */
+  letter-spacing: 1px; /* Space between letters */
+  margin-bottom: 20px; /* Space below the heading */
+  margin-top: 15px;
+  font-weight: bold; /* Make it bold */
+  text-align: left; /* Center the heading */
+  font-family: 'Roboto', sans-serif; /* Consistent font style */
+  text-transform: uppercase;
+
+}
+
+.slider_section .detail-box p{
+  font-size: 18px !important;
+}
+
+
+.slider_section {
+  position: relative;
+  background: linear-gradient(to bottom, #001d36, #00204a); /* Dark gradient background */
+  color: white; /* Ensure text color stands out against the background */
+  padding: 40px 0; /* Padding for top and bottom */
+}
+
+/* Carousel Inner */
+.carousel-inner {
+  height: 100%; /* Ensure it takes full height */
+}
+
+/* Detail Box */
+.detail-box {
+  padding: 20px; /* Adjust padding for detail box */
+}
+
+/* Button Styles */
+.btn1 {
+  background-color: #ffffff; /* Button background color */
+  color: #2d54c0; /* Button text color */
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn1:hover {
+  background-color: #2d54c0; /* Hover effect */
+  color: white; /* Change text color on hover */
+}
+
+  .slider_section .detail-box{
+    height: 420px;
+    margin-top: 35px;
+  }
+  
+  .slider_section .box {
+    border-radius: 0; /* No curves */
+  }
+  
+  .slider_section .detail-box h3, .slider_section .detail-box h1 {
+    margin-bottom: 15px;
+    color: #ffffff; /* Ensuring text contrast on dark background */
+  }
+  
+  .slider_section .detail-box p {
+    color: #fefefe;
+    font-family: 'Roboto', sans-serif; /* Consistent font style */
+  
+  }
+  
+  .slider_section .img-box {
+    margin-top: 25px ;
+  
+  }
+  
+  .slider_section .img-box img {
+    width: 100%;
+    -webkit-animation: upDown 5s infinite; /* Restoring the image animation */
+            animation: upDown 5s infinite;
+  }
+  
+  @-webkit-keyframes upDown {
+    0% {
+      -webkit-transform: translateY(-45px);
+              transform: translateY(-45px);
+    }
+    50% {
+      -webkit-transform: translateY(45px);
+              transform: translateY(45px);
+    }
+    100% {
+      -webkit-transform: translateY(-45px);
+              transform: translateY(-45px);
+    }
+  }
+  
+  @keyframes upDown {
+    0% {
+      -webkit-transform: translateY(-45px);
+              transform: translateY(-45px);
+    }
+    50% {
+      -webkit-transform: translateY(45px);
+              transform: translateY(45px);
+    }
+    100% {
+      -webkit-transform: translateY(-45px);
+              transform: translateY(-45px);
+    }
+  }
+  
+  .slider_section .detail-box .btn-box .btn1 {
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 25px;
+    padding: 10px 15px;
+    background-color: #00bbf0;
+    color: #ffffff;
+    border-radius: 0;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    border: none;
+  }
+  
+  .slider_section .detail-box .btn-box .btn1:hover {
+    background-color: #007fa4;
+  }
+  
+  .slider_section .detail-box .btn-box .btn2 {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 0;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    border: none;
+  }
+  
+  .slider_section .detail-box .btn-box .btn2:hover {
+    background-color: black;
+  }
+  
+  .slider_section ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .slider_section li {
+    color: #7cd8ed;
+    align-items: left !important;
+    font-size: 16px;
+    margin: 0 15px;
+    position: relative;
+    padding: 5px 10px;
+    transition: color 0.3s, transform 0.3s;
+    font-family: 'Roboto', sans-serif; /* Consistent font style */
+  
+  }
+  
+  .slider_section li::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  
+  .slider_section li:hover {
+    color: white;
+    transform: translateY(-2px);
+  }
+  
+  
+  .slider_section .carousel-indicators li {
+    background-color: #ffffff;
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    opacity: 1;
+  }
+  
+  .slider_section .carousel-indicators li.active {
+    width: 20px;
+    height: 20px;
+    background-color: #00bbf0;
+  }
+  
+/* Slider Section - Responsive */
+@media (max-width: 768px) {
+  .slider_section .detail-box h3 {
+    font-size: 1rem; /* Smaller font size for h3 */
+  }
+
+  .slider_section .detail-box h1 {
+    font-size: 2rem; /* Smaller font size for h1 */
+  }
+
+  .slider_section .detail-box p {
+    font-size: 16px; /* Adjust font size */
+  }
+
+  .slider_section {
+    padding: 20px 0; /* Reduced padding for mobile */
+  }
+
+  .slider_section .detail-box {
+    padding: 15px; /* Adjust padding */
+    height: auto; /* Auto height for better fit */
+  }
+}
+
+/*------------ */
+
+/* Service section */
+.service_section {
+  background-color: #f8f8f9;
+  text-align: center; /* Center the text within the section */
+  padding: 20px; /* Add padding for spacing */
+}
+
+.service_section .box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; /* Center text within the box */
+  width: 90%; /* Use percentage for responsive width */
+  width: 235px !important; /* Maximum width for larger screens */
+  height: 490px !important; /* Use consistent height */
+  margin: 20px auto; /* Center boxes horizontally and add margin */
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease; /* Smooth transition for the shadow */
+  overflow: hidden; /* Prevent overflow */
+}
+
+.detail-box p{
+  font-size: 12px !important;
+
+}
+
+@keyframes wowAnimation {
+  0% {
+    transform: scale(1) translateY(0); /* Start at original scale and position */
+    opacity: 1; /* Slightly transparent */
+  }
+  50% {
+    transform: scale(1.05) translateY(-5px); /* Scale up and lift slightly */
+    opacity: 1; /* Fully opaque */
+  }
+  100% {
+    transform: scale(1) translateY(0); /* Return to original scale and position */
+    opacity: 1; /* Fully opaque */
+  }
+}
+
+.service_section h2 {
+  font-size: 28px; /* Slightly larger font size */
+  color: #2d54c0; /* Base color */
+  background: linear-gradient(90deg, #2d54c0, #00bbf0); /* Gradient effect */
+  -webkit-background-clip: text; /* Clip the background to the text */
+  -webkit-text-fill-color: transparent; /* Make the text transparent to show the gradient */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+  letter-spacing: 1px; /* Space between letters */
+  margin-bottom: 20px; /* Space below the heading */
+  font-weight: bold; /* Make it bold */
+  font-family: 'Roboto', sans-serif; /* Consistent font style */
+  text-transform: uppercase;
+  text-decoration: underline #204098 2px;
+  border-radius: 5px;
+  display: inline-block; /* Ensure it takes only the width it needs */
+  margin: 0 auto; /* Center the heading */
+}
+
+.service_section .box:hover {
+  box-shadow: 
+    0 4px 10px rgba(0, 191, 255, 0.4),   /* Light blue shadow */
+    0 8px 20px rgba(0, 0, 139, 0.7);    /* Dark blue shadow */
+  animation: wowAnimation 0.5s forwards; /* Trigger wow animation on hover */
+}
+
+.service_section .box .img-box {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 150px; /* Fixed width for image box */
+  height: 150px; /* Fixed height for image box */
+  margin-bottom: 10px;
+}
+
+.service_section .box .img-box img {
+  max-width: 100%;
+  max-height: 100%;
+  transition: all 0.3s; /* Optional transition for image */
+}
+
+.service_section .box .detail-box h5 {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif; /* Consistent font style */
+  color: #05a3c6;
+}
+
+.service_section p {
+  font-size: 15px; /* Slightly larger for better readability */
+  color: #333; /* Dark grey color for better contrast */
+  line-height: 1.5; /* Improved line height for readability */
+  padding: 5px; /* Padding for a bit of breathing space */
+  text-align: center; /* Center the text for a uniform look */
+  font-family: 'Roboto', sans-serif; /* Consistent font style */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .service_section .box {
+    width: 90%; /* Full width on smaller screens */
+    height: auto; /* Adjust height automatically */
+  }
+
+  .service_section h2 {
+    font-size: 24px; /* Slightly smaller font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .service_section h2 {
+    font-size: 20px; /* Further decrease font size for very small screens */
+  }
+
+  .service_section .box {
+    margin-top: 15px; /* Adjust margin for smaller screens */
+  }
+}
+/* Slide-up animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.service_section .box.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+/*------------ */
+
+
+/*scrolling image section*/
+  .scrolling-images {
+    overflow: hidden;
+    position: relative;
+    height: 90px; /* Adjust height as needed */
+    background-color: white; /* Background color */
+  }
+  
+  .scrolling-container {
+    display: flex;
+    animation: scroll 10s linear infinite; /* Medium speed */
+  }
+  
+  .scrolling-content {
+    display: flex;
+  }
+  
+  .scrolling-content img {
+    height: 100%; /* Keep image height within the section */
+    margin-right: 20px; /* Space between images */
+  }
+  
+  /* Ensure seamless scrolling effect */
+  @keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Scroll by half the total width */
+    }
+  }
+  /*------------ */
+
+    /*About us section */
+
+  .about_us_section {
+    background-color: #00204a; /* Dark blue background */
+    padding: 40px 20px; /* Add padding around the section */
+    color: #fff; /* White text color for contrast */
+    margin-bottom: 5px; /* Space below the section */
+  }
+  
+  .about_us_section .container {
+    position: relative; /* To position the text over the background image */
+  }
+  
+  .about_us_section h1 {
+    font-size: 28px; /* Slightly larger font size */
+    color: #20d2fe; /* Base color */
+    text-shadow: 2px 2px 5px rgba(144, 193, 205, 0.7); /* Added shadow */
+    letter-spacing: 1px; /* Space between letters */
+    margin-bottom: 20px; /* Space below the heading */
+    margin-top: 15px;
+    font-weight: bold; /* Make it bold */
+    text-align: center; /* Center the heading */
+    font-family: 'Roboto', sans-serif; /* Consistent font style */
+    text-transform: uppercase;
+  }
+  
+  /* General paragraph styles */
+  .about_us_section p {
+    font-size: 1.3em; /* Standard paragraph font size */
+    line-height: 1.5; /* Improved line height for readability */
+    text-align: left; /* Align text to the left */
+  }
+
+  /* Media Queries for About Us Section Responsiveness */
+@media (max-width: 768px) {
+  .about_us_section h1 {
+    font-size: 24px; /* Adjust heading size for smaller screens */
+  }
+
+  .about_us_section p {
+    font-size: 0.9em; /* Slightly smaller paragraph size */
+    text-align: center; /* Center align text for better readability */
+  }
+  
+  .about-image {
+    max-width: 100%; /* Ensure image is responsive */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .animated-image,
+  .animated-text {
+    transition: opacity 1s ease, transform 1s ease; /* Adjust transition timing for smaller screens */
+  }
+}
+
+  
+  /* Image animation settings */
+  .animated-image {
+    opacity: 0; /* Start invisible */
+    transform: translateX(100px); /* Start 100px off the right */
+    transition: opacity 1s ease, transform 1s ease; /* Transition for opacity and transform */
+  }
+  
+  .visible .animated-image {
+    opacity: 1; /* Fade in */
+    transform: translateX(0); /* Move to original position */
+  }
+  
+  /* Text animation settings */
+  .animated-text {
+    opacity: 0; /* Start invisible */
+    transform: translateY(20px); /* Start 20px down */
+    transition: opacity 1s ease, transform 1s ease; /* Transition for opacity and transform */
+  }
+  
+  .visible .animated-text {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to original position */
+  }
+  
+  /* Style for the image */
+  .about-image {
+    max-width: 100%; /* Ensure image is responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: Add border radius for rounded corners */
+  }
+    /*------------ */
+
+
+      /*process section */
+
+  .process-section {
+    background-color: #f8f9fa; /* Light background for contrast */
+    padding: 60px 0; /* Added padding for more space */
+  }
+  
+  .process-title {
+    font-size: 28px; /* Slightly larger font size */
+    color: #2d54c0; /* Base color */
+    background: linear-gradient(90deg, #2d54c0, #00bbf0); /* Gradient effect */
+    -webkit-background-clip: text; /* Clip the background to the text */
+    -webkit-text-fill-color: transparent; /* Make the text transparent to show the gradient */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    letter-spacing: 1px; /* Space between letters */
+    margin-bottom: 20px; /* Space below the heading */
+    font-weight: bold; /* Make it bold */
+    text-align: center; /* Center the heading */
+    font-family: 'Roboto', sans-serif; /* Consistent font style */
+    text-transform: uppercase;
+    text-decoration: underline #204098 2px;
+    border-radius: 5px;
+  }
+  
+  .step-item {
+    background-color: #ffffff; /* White background for each step */
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+    padding: 30px; /* Inner padding */
+    margin: 15px; /* Space between items */
+    position: relative; /* Position for pseudo-element */
+    overflow: hidden; /* Prevents overflow of pseudo-element */
+    animation: float 3s ease-in-out infinite; /* Floating animation */
+  }
+  
+  @keyframes float {
+    0%, 100% {
+        transform: translateY(0); /* Start and end at original position */
+    }
+    50% {
+        transform: translateY(-10px); /* Float upwards */
+    }
+  }
+  
+  .step-icon {
+    font-size: 50px; /* Larger icon size */
+    color: #2d54c0; /* Icon color */
+    margin-bottom: 15px; /* Space below icon */
+  }
+  
+  .step-item h4 {
+    font-size: 26px; /* Slightly larger heading size */
+    color: #2d54c0; /* Icon color */
+    margin: 10px 0; /* Space around heading */
+    font-weight: 600; /* Semi-bold heading */
+    font-family: 'Roboto', sans-serif; /* Consistent font style */
+  
+  }
+  
+  .step-item p {
+    font-size: 1em; /* Adjust font size for description */
+    color: black; /* Text color for description */
+    line-height: 1.6; /* Line height for better readability */
+    font-family: 'Roboto', sans-serif; /* Consistent font style */
+    text-align: left;
+  
+  }
+  
+  /* Pseudo-element for decorative background */
+  .step-item:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(45, 84, 192, 0.1); /* Light overlay behind the item */
+    border-radius: 15px; /* Rounded corners */
+    z-index: 0; /* Behind content */
+  }
+  
+  .step-item h4, .step-item p {
+    position: relative; /* Positioning for stacking */
+    z-index: 1; /* Above pseudo-element */
+  }
+  
+
+  /* Media Queries for Process Section Responsiveness */
+@media (max-width: 768px) {
+  .process-title {
+    font-size: 24px; /* Adjust title size on smaller screens */
+  }
+
+  .step-item {
+    padding: 20px; /* Adjust padding for step items */
+    margin: 10px; /* Space between items */
+  }
+  
+  .step-icon {
+    font-size: 40px; /* Adjust icon size on smaller screens */
+  }
+
+  .step-item h4 {
+    font-size: 22px; /* Slightly smaller heading size */
+  }
+}
+    /*------------ */
+
+
+
+  
+/* What’s Best About Us Section */
+.best-about-us {
+  background-color: #00204a !important;
+  margin-bottom: 45px;
+}
+
+.best-about-us h2 {
+  font-size: 28px; /* Slightly larger font size */
+  color: #20d2fe; /* Base color */
+  text-shadow: 2px 2px 5px rgba(144, 193, 205, 0.7); /* Added shadow */
+  letter-spacing: 1px; /* Space between letters */
+  margin-bottom: 20px; /* Space below the heading */
+  margin-top: 15px;
+  font-weight: bold; /* Make it bold */
+  text-align: center; /* Center the heading */
+  font-family: 'Roboto', sans-serif; /* Consistent font style */
+  text-transform: uppercase;
+}
+
+.best-about-us .quote {
+  border: 2px solid var(--primary);
+}
+
+.best-about-us ul {
+  color: white;
+}
+
+/* Medium size for the image */
+.best-about-image {
+  width: 75%; /* Set to 75% of the container, adjust as necessary */
+  max-width: 400px; /* Optional: set a max width */
+  height: auto; /* Maintain aspect ratio */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Keep existing transitions */
+}
+
+/* Animation and Transition for Image */
+.animated-image {
+  opacity: 0; /* Start hidden */
+  transform: scale(0.8); /* Slightly scale down */
+}
+
+/* Add the animation when the section is in view */
+.best-about-us.visible .animated-image {
+  opacity: 1; /* Fade in */
+  transform: scale(1); /* Scale to original size */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .best-about-us .quote {
+    padding: 20px;
+  }
+
+  /* Adjust image size for smaller screens */
+  .best-about-image {
+    width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+  }
+}
+
+/* Text animation */
+.animated-text {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.best-about-us.visible .animated-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+    /*------------ */
+
+
+
+  /*course section */
+/* Default structure remains the same */
+.wrapper {
+  max-width: 1090px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 20px; /* Added padding to create space at the top */
+}
+
+.course-title {
+    font-size: 28px; /* Adjust size as needed */
+    margin: 20px 0; /* Space above and below the title */
+     width: 100%; /* Ensure title takes full width */
+    color: #2d54c0; /* Base color */
+    background: linear-gradient(90deg, #2d54c0, #00bbf0); /* Gradient effect */
+    -webkit-background-clip: text; /* Clip the background to the text */
+    -webkit-text-fill-color: transparent; /* Make the text transparent to show the gradient */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    letter-spacing: 1px; /* Space between letters */
+    margin-bottom: 20px !important; /* Space below the heading */
+    font-weight: bold; /* Make it bold */
+    text-align: center; /* Center the heading */
+    font-family: 'Roboto', sans-serif; /* Consistent font style */
+    text-transform: uppercase;
+    text-decoration: underline #204098 2px;
+    border-radius: 5px;
+}
+
+
+.wrapper .table {
+  background: #fff;
+  width: calc(33% - 20px);
+  padding: 30px 30px;
+  position: relative;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for scale and shadow */
+  opacity: 0; /* Start hidden for slide effect */
+  transform: translateY(20px); /* Start position for slide-in */
+  animation: slideIn 10s forwards; /* Slide-in animation */
+}
+
+.wrapper .table {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.wrapper .table.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.table:hover {
+  transform: scale(1.05); /* Scale effect on hover */
+  box-shadow: 0 10px 20px rgba(45, 84, 192, 0.6); /* Blue gradient shadow on hover */
+}
+
+
+
+.table .price-section {
+  display: flex;
+  justify-content: center;
+}
+
+.table .price-area {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.price-area .inner-area {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  line-height: 117px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  transition: background 0.3s ease; /* Transition for background color */
+}
+
+.price-area:hover .inner-area {
+  background: rgba(255, 255, 255, 0.1); /* Slight background change on hover */
+}
+
+.price-area .inner-area .text {
+  font-size: 25px;
+  font-weight: 400;
+  position: absolute;
+  top: -10px;
+  left: 17px;
+}
+
+.price-area .inner-area .price {
+  font-size: 45px;
+  font-weight: 500;
+  margin-left: 16px;
+}
+
+.table .package-name {
+  width: 100%;
+  height: 2px;
+  margin: 35px 0;
+  position: relative;
+}
+
+.table .package-name::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 20px;
+  font-weight: 500;
+  background: #fff;
+  padding: 0 15px;
+  transform: translate(-50%, -50%);
+}
+
+.table .features li {
+  margin-bottom: 15px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.features li .list-name {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.features li .icon {
+  font-size: 15px;
+}
+
+.features li .icon.check {
+  color: #2db94d;
+}
+
+.table .btn {
+  width: 80%;
+  display: flex;
+  margin-top: 35px;
+  justify-content: center;
+  margin-top: 5px !important;
+  margin-bottom: -5px !important;
+  font-size: 15px;
+}
+
+.table .btn button {
+  width: 80%;
+  height: 50px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Transition for button effects */
+  
+}
+
+.table .btn button:hover {
+  border-radius: 5px;
+}
+
+/* Style for different courses */
+
+/* Premium Course (e.g., Assignment Tutoring) */
+.premium .package-name::before {
+  content: "Assignment Tutoring";
+  font-size: 18px;
+  font-weight: 650;
+  text-transform: uppercase;
+  text-align: center;
+  color: #2d54c0;
+}
+
+.premium .price-area,
+.premium .inner-area,
+.premium .btn button {
+  background: #2d54c0; /* Base color */
+}
+
+.premium .btn button:hover {
+  background: #2d54c0; /* Base color */
+}
+
+/* New Course  (e.g., Essay Writing) */
+.essay-writing .package-name::before {
+  content: "Essay Tutoring";
+  font-size: 18px;
+  font-weight: 650;
+  text-transform: uppercase;
+  text-align: center;
+  color: #00bbf0;
+}
+
+.essay-writing .price-area,
+.essay-writing .inner-area,
+.essay-writing .btn button {
+  background: #00bbf0;
+}
+
+.essay-writing .btn button:hover {
+  background: #00bbf0;
+}
+
+/* New Course  (e.g., Research Paper Help) */
+.coursework .package-name::before {
+  content: "Coursework Tutoring";
+  font-size: 18px;
+  font-weight: 650;
+  text-transform: uppercase;
+  text-align: center;
+  color: #2d54c0;
+}
+
+.coursework .price-area,
+.coursework .inner-area,
+.coursework .btn button {
+  background: #2d54c0; /* Base color */
+}
+
+.coursework .btn button:hover {
+  background: #2d54c0; /* Base color */
+}
+
+/* New Course  (e.g., Dissertation) */
+.dissertation .package-name::before {
+  content: "Dissertation Tutoring";
+  font-size: 18px;
+  font-weight: 650;
+  text-transform: uppercase;
+  text-align: center;
+  color: #2d54c0;
+}
+
+.dissertation .price-area,
+.dissertation .inner-area,
+.dissertation .btn button {
+  background: #2d54c0; /* Base color */
+}
+
+.dissertation .btn button:hover {
+  background: #2d54c0; /* Base color */
+}
+
+/* Proofreading Service */
+.proofreading .package-name::before {
+  content: "Proofreading Service";
+  font-size: 18px;
+  font-weight: 650;
+  text-transform: uppercase;
+  text-align: center;
+  color: #00bbf0;
+}
+
+.proofreading .price-area,
+.proofreading .inner-area,
+.proofreading .btn button {
+  background: #00bbf0;
+}
+
+.proofreading .btn button:hover {
+  background: #00bbf0;
+}
+
+/* Thesis Tutoring */
+.thesis-tutoring .package-name::before {
+  content: "Thesis Tutoring";
+  font-size: 18px;
+  font-weight: 650;
+  text-transform: uppercase;
+  text-align: center;
+  color: #2d54c0;
+}
+
+.thesis-tutoring .price-area,
+.thesis-tutoring .inner-area,
+.thesis-tutoring .btn button {
+  background: #2d54c0; /* Base color */
+}
+
+.thesis-tutoring .btn button:hover {
+  background: #2d54c0; /* Base color */
+}
+
+/* Responsive */
+@media (max-width: 1020px) {
+  .wrapper .table {
+    width: calc(50% - 20px);
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 698px) {
+  .wrapper .table {
+    width: 100%;
+  }
+}
+    /*------------ */
+
+
+
+/*** Team ***/
+.team-item img {
+  transition: .5s;
+}
+
+.team-item:hover img {
+  transform: scale(1.1);
+}
+    /*------------ */
+
+
+
+.testimonial .text-center h1 {
+  
+  
+}
+
+
+/* Testimonial Section */
+.testimonial-carousel {
+  margin-top: 40px; /* Add space above carousel */
+}
+
+.testimonial-item {
+  background: #f7f9fc; /* Light background for testimonials */
+  border-radius: 10px; /* Rounded corners */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth hover effect */
+  padding: 20px; /* Inner padding */
+}
+
+/* Keyframe Animation for Hover Effect */
+@keyframes wowAnimation {
+  0% {
+    transform: scale(1) rotate(0deg); /* Start scale 1 and no rotation */
+    opacity: 0.9; /* Slightly transparent */
+  }
+  50% {
+    transform: scale(1.05) rotate(5deg); /* Slightly larger and rotated */
+    opacity: 1; /* Fully opaque */
+  }
+  100% {
+    transform: scale(1) rotate(0deg); /* Back to original state */
+    opacity: 1; /* Fully opaque */
+  }
+}
+
+.testimonial-item:hover {
+  animation: wowAnimation 0.5s forwards; /* Play the wow animation on hover */
+  box-shadow: 
+    0 4px 15px rgba(45, 84, 192, 0.5),  /* Light blue shadow */
+    0 8px 25px rgba(2, 61, 121, 0.7); /* Dark blue shadow */
+}
+
+.testimonial-text {
+  border-radius: 10px; /* Match rounded corners */
+  color: #333; /* Dark text for readability */
+}
+
+/* Testimonial Headings */
+.testimonial-item h5 {
+  font-size: 20px; /* Size of names */
+  color: #2d54c0; /* Blue color for names */
+  margin-bottom: 5px; /* Space below names */
+  font-weight: bold; /* Bold names */
+}
+
+.testimonial-item p {
+  font-size: 16px; /* Size of roles */
+  color: #777; /* Gray color for roles */
+}
+    /*------------ */
+
+
+
+/* FAQ Section */
+.accordion-button {
+  background: #2d54c0; /* Blue background for buttons */
+  color: white; /* White text */
+  border: none; /* No border */
+  font-weight: bold; /* Bold text */
+  transition: background 0.3s; /* Smooth background transition */
+}
+
+.accordion-button:hover {
+  background: #00bbf0; /* Lighter blue on hover */
+}
+
+.accordion-button:focus {
+  box-shadow: none; /* Remove focus outline */
+}
+
+.accordion-body {
+  background: #f7f9fc; /* Light background for FAQ body */
+  color: #333; /* Dark text for readability */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* FAQ Headings */
+.accordion-header {
+  margin-bottom: 10px; /* Space below each question */
+}
+
+.accordion-item {
+  margin-bottom: 15px; /* Space between accordion items */
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 24px; /* Section title size */
+  font-weight: bold; /* Bold title */
+  color: #2d54c0; /* Title color */
+  margin-bottom: 15px; /* Space below title */
+}
+    /*------------ */
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 24px; /* Section title size */
+  color: #2d54c0; /* Blue color */
+  margin-bottom: 15px; /* Space below title */
+
+}
+
+h1 {
+  font-size: 36px; /* Main heading size */
+  color: #2d54c0; /* Blue color */
+  margin-bottom: 40px; /* Space below heading */
+  text-transform: uppercase; /* Uppercase letters */
+}
+
+/* Testimonial Section */
+.testimonial-carousel {
+  display: flex;
+  justify-content: space-around; /* Space between testimonials */
+  flex-wrap: wrap; /* Wrap on smaller screens */
+  transition: all 0.5s ease; /* Smooth transition */
+}
+
+.testimonial-item {
+  background: #ffffff; /* White background */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Inner padding */
+  margin: 10px; /* Space between items */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+  flex: 1 0 300px; /* Responsive sizing */
+  text-align: center; /* Center align text */
+}
+
+.testimonial-item:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 
+  0 4px 10px rgba(0, 191, 255, 0.4),   /* Light blue shadow */
+  0 8px 20px rgba(0, 0, 139, 0.7);    /* Dark blue shadow */}
+
+.testimonial-item img {
+  width: 80px; /* Image width */
+  height: 80px; /* Image height */
+  border-radius: 50%; /* Circular images */
+  margin-bottom: 15px; /* Space below image */
+}
+
+.stars {
+  color: #00aaff; /* Gold color for stars */
+  margin-bottom: 10px; /* Space below stars */
+}
+
+.testimonial-text {
+  background: #f7f9fc; /* Light background for text */
+  padding: 10px; /* Inner padding */
+  border-radius: 8px; /* Rounded corners */
+}
+    /*------------ */
+
+
+
+/* FAQ Section Styles */
+.container2 {
+  max-width: 800px; /* Limit the maximum width of the container */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 20px; /* Add padding around the content */
+}
+
+/* Accordion Item Styles */
+.accordion-item {
+  border: 1px solid #ddd; /* Light border around each accordion item */
+  border-radius: 5px; /* Rounded corners for a softer look */
+  margin-bottom: 10px; /* Space between accordion items */
+  overflow: hidden; /* Hide overflow for smooth transitions */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Accordion Item Hover Effect */
+.accordion-item:hover {
+  background-color: #f7f9fc !important; /* Change background color on hover */
+}
+
+/* Accordion Header Styles */
+.accordion-header {
+  background-color: #ffffff !important; /* Background color for the header */
+  font-family: 'Roboto', sans-serif; /* Consistent font style */
+
+}
+
+/* Accordion Button Styles */
+.accordion-button {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: space-between; /* Space between button text and icon */
+  align-items: center; /* Center items vertically within the button */
+  padding: 15px; /* Padding around the button */
+  width: 100%; /* Button takes full width */
+  font-size: 16px; /* Font size for button text */
+  color: #2d54c0; /* Text color for button */
+  border: none; /* Remove default border */
+  background: transparent; /* Transparent background */
+  transition: color 0.3s ease; /* Smooth transition for text color */
+  font-family: 'Roboto', sans-serif; /* Consistent font style */
+
+}
+
+/* Accordion Button Focus Style */
+.accordion-button:focus {
+  outline: none; /* Remove default focus outline */
+}
+
+/* Active Accordion Button Style */
+.accordion-button:not(.collapsed) {
+  color: #2d54c0; /* Change color when button is active (not collapsed) */
+}
+
+
+/* Hover color change */
+.accordion-button:hover {
+  color: #20d2fe !important; /* This applies the light blue color on hover */
+  background-color: #ffff !important;
+}
+
+/* Accordion Body Styles */
+.accordion-body {
+  padding: 15px; /* Inner padding for the accordion body */
+  font-size: 15px; /* Font size for body text */
+  color: #555; /* Text color for body */
+  background-color: #f9f9f9; /* Background color for the body */
+  font-family: 'Roboto', sans-serif; /* Consistent font style */
+
+}
+
+/* Responsive Styles for Smaller Screens */
+@media (max-width: 768px) {
+  .accordion-button {
+      font-size: 14px; /* Smaller font size for buttons on mobile */
+  }
+
+  h1 {
+      font-size: 24px; /* Smaller font size for main heading on mobile */
+  }
+
+  .section-title {
+      font-size: 16px; /* Smaller font size for section title on mobile */
+  }
+}
+
+    /*------------ */
+
+    /*Info section */
+
+.info_section {
+  background-color: #00204a;
+  color: #ffffff;
+  padding: 45px 0 15px 0;
+}
+
+.info_section h4 {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.info_section .info_col {
+  margin-bottom: 30px;
+}
+
+.info_section .info_contact .contact_link_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.info_section .info_contact .contact_link_box a {
+  margin: 5px 0;
+  color: #ffffff;
+}
+
+.info_section .info_contact .contact_link_box a i {
+  margin-right: 5px;
+}
+
+.info_section .info_contact .contact_link_box a:hover {
+  color: #00bbf0;
+}
+
+.info_section .info_social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.info_section .info_social a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #ffffff;
+  border-radius: 100%;
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.info_section .info_social a:hover {
+  color: #00bbf0;
+}
+
+.info_section .info_links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.info_section .info_links a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.info_section .info_links a:hover {
+  color: #00bbf0;
+}
+
+.info_section form input {
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  background-color: transparent;
+  width: 100%;
+  height: 45px;
+  color: #ffffff;
+  outline: none;
+}
+
+.info_section form input::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+.info_section form input:-ms-input-placeholder {
+  color: #ffffff;
+}
+
+.info_section form input::-ms-input-placeholder {
+  color: #ffffff;
+}
+
+.info_section form input::placeholder {
+  color: #ffffff;
+}
+
+.info_section form button {
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  padding: 10px 55px;
+  background-color: #00bbf0;
+  color: #ffffff;
+  border-radius: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border: none;
+  margin-top: 15px;
+}
+
+.info_section form button:hover {
+  background-color: #007fa4;
+}
+
+/* footer section*/
+.footer_section {
+  position: relative;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.footer_section p {
+  color: #00204a;
+  padding: 25px 0;
+  margin: 0;
+}
+
+.footer_section p a {
+  color: inherit;
+}
+
+      /*------------ */
+
+      /* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Show the overlay when active */
+.popup-overlay.show {
+  opacity: 1;
+}
+
+/* Popup Content */
+.popup-content {
+  background: linear-gradient(135deg, #4a90e2, #9013fe); /* Attractive gradient */
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+  animation: slideIn 0.5s ease forwards; /* Slide in animation */
+}
+
+/* Animation */
+@keyframes slideIn {
+  from {
+      transform: translateY(-30px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+/* Close Button */
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  color: #fff; /* White color */
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.popup-close:hover {
+  transform: scale(1.2); /* Scale effect on hover */
+}
+
+/* Quote Section */
+.quote-part {
+  color: #fff; /* White text */
+}
+
+.section-title h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.section-title p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+/* Form Styling */
+.quote-form {
+  background: rgba(255, 255, 255, 0.1); /* Light transparent background */
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.form-control {
+  background: rgba(255, 255, 255, 0.2); /* Light input background */
+  border: none;
+  border-radius: 5px;
+  color: #fff; /* White text for inputs */
+  padding: 12px;
+  margin-bottom: 15px;
+  transition: background 0.3s;
+}
+
+.form-control:focus {
+  background: rgba(255, 255, 255, 0.3); /* Change background on focus */
+  outline: none;
+}
+
+.quote-contact-btn {
+  background: #ff4081; /* Attractive button color */
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  padding: 15px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.quote-contact-btn:hover {
+  background: #ff60a1; /* Darker shade on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Contact Details */
+.contact-detail {
+  margin-bottom: 15px;
+}
+
+.contact-detail h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.social-ac a {
+  margin-right: 10px;
+  color: #fff; /* White social icon */
+  transition: color 0.3s;
+}
+
+.social-ac a:hover {
+  color: #ff60a1; /* Change color on hover */
+}
+
